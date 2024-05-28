@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-tenant-app-layout>
     @section('title')
     Manage Blogs
     @endsection
@@ -137,4 +137,4 @@
             @endif
         </div>
     </div>
-</x-app-layout>
+</x-tenant-app-layout>

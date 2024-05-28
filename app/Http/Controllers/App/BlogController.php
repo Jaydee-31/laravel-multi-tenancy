@@ -61,21 +61,21 @@ class BlogController extends Controller
 
     public function show(Blog $blog)
     {
-        $this->authorize('viewAny', $blog);
+        // $this->authorize('viewAny', $blog);
 
         return view('blogs.show', compact('blog'));
     }
 
     public function edit(Blog $blog)
     {
-        $this->authorize('edit', $blog);
+        // $this->authorize('edit', $blog);
 
         return view('blogs.edit', compact('blog'));
     }
 
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        $this->authorize('update', $blog);
+        // $this->authorize('update', $blog);
 
         $input = $request->all();
 
@@ -95,7 +95,7 @@ class BlogController extends Controller
 
     public function destroy(Blog $blog)
     {
-        $this->authorize('delete', $blog);
+        // $this->authorize('delete', $blog);
 
         $blog->delete();
 

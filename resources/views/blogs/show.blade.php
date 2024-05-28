@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-tenant-app-layout>
     @section('title')
     {{ $blog->title }}
     @endsection
@@ -25,4 +25,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-tenant-app-layout>

@@ -1,5 +1,4 @@
-<x-app-layout>
-
+<x-tenant-app-layout>
     @section('title')
         Create Blog
     @endsection
@@ -52,4 +51,4 @@
             </form>
         </div>
     </div>
-</x-app-layout>
+</x-tenant-app-layout>
