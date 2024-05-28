@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\App\BlogController;
 use App\Http\Controllers\App\UserController;
 use App\Http\Controllers\App\ProfileController;
+use App\Http\Controllers\App\UserSubscriptionController;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
@@ -48,6 +49,10 @@ Route::middleware([
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
         Route::resource('blogs', BlogController::class);
+
+        Route::get('/subscription', [UserSubscriptionController::class, 'show']);
+        Route::post('/subscribe', [UserSubscriptionController::class, 'store'])->name('subscription.store');
+        Route::delete('/subscribe/cancel', [UserSubscriptionController::class, 'destroy']);
 
         Route::group(['middleware' => ['role:admin']], function () {
             Route::resource('users', UserController::class);

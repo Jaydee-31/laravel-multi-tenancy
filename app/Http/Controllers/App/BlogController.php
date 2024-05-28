@@ -39,6 +39,33 @@ class BlogController extends Controller
 
     public function create(Blog $blog)
     {
+
+        $user = auth()->user();
+        $subscription = $user->subscriptions()->latest()->first();
+        $subscriptionType = $subscription ? $subscription->subscription : 'free';
+
+        $blogCount = Blog::where('author_id', $user->id)
+            ->whereMonth('created_at', date('m'))
+            ->whereYear('created_at', date('Y'))
+            ->count();
+
+        switch ($subscriptionType) {
+            case 'free':
+                if ($blogCount >= 3) {
+                    return redirect()->back()->with('error', 'You have reached your limit of 3 blogs per month.');
+                }
+                break;
+            case 'basic':
+                if ($blogCount >= 15) {
+                    return redirect()->back()->with('error', 'You have reached your limit of 15 blogs per month.');
+                }
+                break;
+            case 'premium':
+                break;
+            default:
+                return redirect()->back()->with('error', 'Invalid subscription type.');
+        }
+
         return view('blogs.create', ['content' => old('content')]);
     }
 

@@ -49,6 +49,12 @@
                 </x-alert-delete>
             @endif
 
+             @if ($error = Session::get('error'))
+                <x-alert-delete>
+                    {{ $error }}
+                </x-alert-delete>
+            @endif
+
             @if($blogs->isEmpty())
                 <x-alert-empty class="bg-gray-50 border border-gray-400 text-gray-700 ">
                     No Blogs found.
