@@ -77,6 +77,8 @@ class TenantController extends Controller
      */
     public function destroy(Tenant $tenant)
     {
-        //
+        $tenant->delete();
+
+        return redirect()->route('dashboard')->with('destroyed', "The tenant has been deleted successfully.");
     }
 }
