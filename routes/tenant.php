@@ -50,7 +50,7 @@ Route::middleware([
 
         Route::resource('blogs', BlogController::class);
 
-        Route::get('/subscription', [UserSubscriptionController::class, 'show']);
+        Route::get('/subscription', [UserSubscriptionController::class, 'show'])->name('subscription.show');
         Route::post('/subscribe', [UserSubscriptionController::class, 'store'])->name('subscription.store');
         Route::delete('/subscribe/cancel', [UserSubscriptionController::class, 'destroy']);
 
