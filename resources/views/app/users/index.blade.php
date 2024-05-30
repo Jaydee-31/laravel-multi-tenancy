@@ -8,10 +8,21 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            @if ($message = Session::get('success'))
+                <x-alert-success>
+                    {{ $message }}
+                </x-alert-success>
+            @endif
+
+            @if ($message = Session::get('destroyed'))
+                <x-alert-delete>
+                    {{ $message }}
+                </x-alert-delete>
+            @endif
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
-
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -47,6 +58,11 @@
                                         </td>
                                         <td class="px-6 py-4">
                                             <x-btn-link href="{{route('users.edit', $user->id)}}">Edit</x-btn-link>
+                                             <form class="inline-block" action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <input type="submit" class=" bg-red-600 p-2 px-4  border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:text-red-100 cursor-pointer mb-2 mr-2" value="Delete">
+                                                </form>
                                         </td>
                                     </tr>
                                 @endforeach

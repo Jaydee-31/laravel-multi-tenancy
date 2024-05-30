@@ -8,9 +8,21 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+             
+            @if ($message = Session::get('success'))
+                <x-alert-success>
+                    {{ $message }}
+                </x-alert-success>
+            @endif
+
+            @if ($message = Session::get('destroyed'))
+                <x-alert-delete>
+                    {{ $message }}
+                </x-alert-delete>
+            @endif
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">

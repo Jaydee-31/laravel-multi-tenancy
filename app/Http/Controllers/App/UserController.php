@@ -43,7 +43,7 @@ class UserController extends Controller
         User::create($validatedData);
 
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User created successfully');
     }
 
     /**
@@ -80,7 +80,7 @@ class UserController extends Controller
         $user->roles()->sync($request->input('roles'));
 
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User updated successfully');
     }
 
     /**
@@ -88,6 +88,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('users.index')->with('destroyed', "The user '{$user->name}' has been deleted successfully.");
     }
 }

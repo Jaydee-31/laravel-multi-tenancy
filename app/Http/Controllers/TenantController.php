@@ -48,7 +48,7 @@ class TenantController extends Controller
             'domain' => $validatedData['domain_name'] . '.' . config('app.domain')
         ]);
 
-        return redirect()->route('tenants.index');
+        return redirect()->route('tenants.index')->with('success', "The tenant '{$request->name}' has been added successfully.");
     }
 
     /**
