@@ -36,9 +36,12 @@ class TenantController extends Controller
             'name'        => 'required|string|max:255',
             'email'       => 'required|email|max:255',
             'domain_name' => 'required|string|max:255|unique:domains,domain',
-            'password'    => ['required', 'confirmed', Rules\Password::defaults()]
+            'password'    => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $validatedData['logo'] = 'asdasd';
+
+        // dd($validatedData);
         $tenant = Tenant::create($validatedData);
 
         $tenant->domains()->create([
