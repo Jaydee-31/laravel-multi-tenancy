@@ -3,6 +3,7 @@
     | Register
     @endsection
 
+        <div class="grid md:grid-cols-2">
     <x-authentication-card>
         <x-slot name="logo">
             <x-tenant-authentication-card-logo />
@@ -50,4 +51,12 @@
             </div>
         </form>
     </x-authentication-card>
+
+    <div class="hidden md:block">
+            <div class="flex flex-col items-center justify-center h-screen">
+                <h1 class="max-w-2xl mb-4 text-center text-5xl font-extrabold leading-none md:text-5xl xl:text-6xl">Uniting Voices, Empowering Ideas</h1>
+                <img class=" h-3/4" src="\assets\image\hero.png" alt="mockup">
+            </div>
+        </div>
+        </div>
 </x-tenant-guest-layout>
