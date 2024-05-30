@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                     @role('admin')
-                    <x-btn-link href="{{route('users.index')}}">Users</x-btn-link>
+                    Admin
                     @endrole
                 </div>
 
