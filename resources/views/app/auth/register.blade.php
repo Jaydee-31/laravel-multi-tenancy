@@ -35,7 +35,7 @@
             
             <div class="flex items-center justify-end mt-5">
                 <label for="dhaa" class="flex items-center">
-                    <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Already registered?') }}</span>
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Already registered?') }}</span>
                 </label>   
             
                 <a href="{{ route('login') }}" class="text-sm">
